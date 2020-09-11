@@ -13,16 +13,15 @@ class ClassList:
     """
 
     def __init__(self, max_students):
-
+        # TODO raise an exception - StudentError - if max_students is zero or negative. 
+        if max_students<=0:  #gatekeeper
+            raise StudentError('Number of students must be greater than 0')
+        # Write test to confirm.
         self.class_list = []
         self.max_students = max_students
 
-        # TODO raise an exception - StudentError - if max_students is zero or negative. 
-        # Write test to confirm.
-       # if max_students<=0: #BUT THIS AFFECTS THE TESTS
-        #    raise StudentError('Max students can\'t be 0 or less')
-
-
+        
+       
     def add_student(self, student):
         ''' Add student if there is space in the class,
         Raises Error if student is already in the list '''

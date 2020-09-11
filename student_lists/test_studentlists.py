@@ -15,6 +15,14 @@ from unittest import TestCase
 
 class TestStudentLists(TestCase):
 
+    def test_cant_create_class_with_negative_students(self):
+        with self.assertRaises(StudentError):
+           test_class = ClassList(-1)
+
+    def test_cant_create_class_with_zero_students(self):
+        with self.assertRaises(StudentError):
+            test_class = ClassList(0)
+
     def test_add_student_check_student_in_list(self):
         test_class = ClassList(2)
         test_class.add_student('Test Student')
@@ -36,9 +44,9 @@ class TestStudentLists(TestCase):
     # and asserts the student is removed. Use assertNotIn
     def test_add_remove_student_ensure_removed(self):
         test_class = ClassList(2)
-        test_class.add_student('Test Student')
-        test_class.remove_student('Test Student')
-        self.assertNotIn('Test Student', test_class.class_list)
+        test_class.add_student('Testy Student')
+        test_class.remove_student('Testy Student')
+        self.assertNotIn('Testy Student', test_class.class_list)
 
 
     ## TODO write a test that adds some example students, 
@@ -55,7 +63,7 @@ class TestStudentLists(TestCase):
     ## TODO write a test that removes a student from an 
     # empty list, and asserts a StudentError is raised
     def test_remove_student_from_empty_list(self):
-        test_class = ClassList(0) #empty class list
+        test_class = ClassList(2) #empty class list
         with self.assertRaises(StudentError): #trying to remove test student should raise Studenterror
             test_class.remove_student('Test Student')
 
@@ -113,9 +121,9 @@ class TestStudentLists(TestCase):
     # Assert index_of_student returns None for a student if the list is empty. 
     # use assertIsNone.
     def test_index_of_student_when_class_list_empty(self):
-        test_class = ClassList(0)  #make an empty class list 
+        test_class = ClassList(2)  
         self.assertIsNone(test_class.index_of_student('Mike'))
- 
+        
  
     ## TODO write another test for index_of_student. In the case when the 
     # class_list is not empty but has some students.
