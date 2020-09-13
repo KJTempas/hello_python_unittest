@@ -47,45 +47,41 @@ class PhoneAssignments():
     def add_employee(self, employee):
         # TODO raise exception if two employees with same ID are added
          #if the id assoc w/ this employee is not already in the employees list, add it
-        #try:
-        #for employee in employees:
-            #if employee.id == employee.id
-        if employee.id not in self.employees:   
-            self.employees.append(employee) #cj 
-        else: 
-        #except:
-            raise PhoneError('That ID is already associated with an employee')
         
+        for employee in self.employees:#loop though employees in list
+            if employee.id == employee.id: #if you find this id already assoc w/ an employee
+                raise PhoneError('That ID is already associated with an employee')  
+        self.employees.append(employee) 
+       
+            
 
     def add_phone(self, phone):
         # TODO raise exception if two phones with same ID are added
+        for phone in self.phones: #loop through phones list
+            if phone.id == phone.id:  #if a phone has the same id as the phone you are adding
+                raise PhoneError('That ID is already associated with a phone')
         
-        if phone.id in self.phones:
-            raise PhoneError('That ID is already associated with a phone')
-        else:
-            self.phones.append(phone) #cj
-        
+        self.phones.append(phone) 
+            
 
 
     def assign(self, phone_id, employee):
         # Find phone in phones list
-        #for phone in self.phones:
-         #   if phone.id == phone_id:  #find the phone with the id provided as a parameter
-            #for phone in self.phones:
+        for phone in self.phones:
+           # if phone.id !=phone_id:
         # TODO if phone is already assigned to an employee, do not change list, raise exception
-        if employee.id in self.phones:
-            raise PhoneError('This phone is already assigned to an employee')
+            if employee.id in self.phones:
+                raise PhoneError('This phone is already assigned to an employee')
         # TODO if employee already has a phone, do not change list, and raise exception
-        if phone_id in self.phones: # meaning this phoneID is already assigned 
-            raise PhoneError('This employee has already been assigned a phone')
+            if phone.id in self.phones: # meaning this phoneID is already assigned 
+           # if employee.id == employee_id:
+                raise PhoneError('This employee has already been assigned a phone')
         # TODO if employee already has this phone, don't make any changes. This should NOT raise an exception.
         for phone in self.phones:
             if phone.id == phone_id:
                 phone.assign(employee.id)
                 return
-           # else:
-            #    raise PhoneError('This phone is already assigned')
-
+           
 
     def un_assign(self, phone_id):
         # Find phone in list, set employee_id to None
