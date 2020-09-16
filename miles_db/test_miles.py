@@ -8,7 +8,7 @@ from miles import MileageError
 
 class TestMileageDB(TestCase):
 
-    test_db_url = 'test_miles.db'
+    test_db_url = 'test_miles.db'#this is the test dbase file name
 
     """
     Before running these test, create test_miles.db

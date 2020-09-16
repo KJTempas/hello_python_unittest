@@ -53,7 +53,7 @@ class TestPhoneManager(unittest.TestCase):
         with self.assertRaises(PhoneError):#trying to add an employee w/ dupl Id should raise a Phone Error
             testAssignmentMgr.add_employee(employee2)
 
-        #self.fail()
+
 
 
     def test_assign_phone_to_employee(self):
@@ -80,10 +80,10 @@ class TestPhoneManager(unittest.TestCase):
         testAssignmentMgr.add_employee(employee1) #add employee
         testAssignmentMgr.add_employee(employee2)
         testPhone1 = Phone(1, 'Apple', 'iPhone 6') #create a phone
-        testAssignmentMgr = PhoneAssignments()
+        #testAssignmentMgr = PhoneAssignments()
         testAssignmentMgr.add_phone(testPhone1) #add the phone
         testAssignmentMgr.assign(testPhone1.id, employee1) #assign phoneID 1 to employee1
-        testAssignmentMgr.assign(testPhone1.id, employee2)  #assign phoneID 1 to empl 2
+        #testAssignmentMgr.assign(testPhone1.id, employee2)  #assign phoneID 1 to empl 2
         with self.assertRaises(PhoneError):
             testAssignmentMgr.assign(testPhone1.id, employee2)  #try to assign phoneID 1 to empl 2
         
@@ -118,7 +118,7 @@ class TestPhoneManager(unittest.TestCase):
         testAssignmentMgr.assign(testPhone1.id, employee1) #assign phoneID 1 to employee1
         testAssignmentMgr.assign(testPhone1.id, employee1)  #assign same phone to same employee
         self.assertEqual(1, testAssignmentMgr.phone_info(employee1).id) #asserting that the phone belonging to emp1 is phone 1
-        #???? not sureabout this assertion - what should I assert?
+        
 
 
     def test_un_assign_phone(self):

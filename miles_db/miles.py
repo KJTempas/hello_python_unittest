@@ -35,6 +35,7 @@ def add_miles(vehicle, new_miles):
 def main():
     while True:
         vehicle = input('Enter vehicle name or enter to quit: ')
+        #vehicle = vehicle.upper() #store all vehicle names in upper case
         if not vehicle:
             break
         miles = float(input(f'Enter new miles for {vehicle}: ')) ## TODO input validation
