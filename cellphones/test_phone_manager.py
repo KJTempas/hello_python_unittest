@@ -144,24 +144,25 @@ class TestPhoneManager(unittest.TestCase):
         testPhone2 = Phone(2, 'Apple', 'iPhone 5')
         testAssignmentMgr.add_phone(testPhone1)#add the two phones
         testAssignmentMgr.add_phone(testPhone2) 
-        
         employee1 = Employee(1, 'Zion') #create some employees
         employee2 = Employee(2, 'Acadia')
         testAssignmentMgr.add_employee(employee1) #add the employees
         testAssignmentMgr.add_employee(employee2)
-
         testAssignmentMgr.assign(testPhone2.id, employee1) #assign phone 2 to employee1
         testAssignmentMgr.assign(testPhone1.id, employee2) #assign phone 1 to empl 2
         
         self.assertEqual('iPhone 5', testAssignmentMgr.phone_info(employee1).model)
         self.assertEqual('iPhone 6', testAssignmentMgr.phone_info(employee2).model)
 
-
-
-        # TODO check that the method returns None if the employee does not have a phone
+    # TODO check that the method returns None if the employee does not have a phone
+    def test_get_phone_info_for_employee_with_no_phone(self):
+        testAssignmentMgr = PhoneAssignments()
+        employee1 = Employee(1, 'Zion') #create some employees
+        testAssignmentMgr.add_employee(employee1) #add the employee
+        self.assertEqual(None, testAssignmentMgr.phone_info(employee1) )
+        
         # TODO check that the method raises an PhoneError if the employee does not exist
 
         #self.fail()
 
-#if__name__=='__main__':
-#unittest.main()
+
